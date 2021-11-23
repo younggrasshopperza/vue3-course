@@ -6,15 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Vue.js 3 - CDN -->
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <title>Young Grasshopper - Tutorial 2</title>
+    <title>Young Grasshopper - Tutorial 3</title>
 </head>
 <body>
-    <h1>Young Grasshopper</h1>
-
+    <h1 style="text-align: center;">Young Grasshopper</h1>
+    <hr>
     <!-- Mounting the Vue App - The Vue app only works within this div with an id of app -->
     <div id="app">
         <!-- displaying the value of the data property: dynamic changable value -->
-        <p>{{ name }} {{ verb }} {{ sentence }} {{ age }}</p>
+        <h3>{{ name }} {{ sentence }} {{ age }}</h3>
+        <!-- click event handler: increment age by one value using the 'age' data property -->
+        <button v-on:click="age++">Increase age</button>
+        <!-- puts space between button-->
+        &nbsp;
+        <!-- click event handler: decrement age by one value using the 'age' data property -->
+        <button v-on:click="age--">Decrease age</button>
+        <br><br>
+        <!-- Another way to type up an event listener: change value of the name -->
+        <div @click="name = 'Sarah'">Change Xolani's name to Sarah by clicking this sentence.</div>
+        <br><br>
+        <!-- Update value the data property using the 'changeName' method property -->
+        <div @click="changeName">Change Xolani's name to Palesa by clicking this sentence.</div>
+        <br><br>
+        <!-- Update value the data property using the 'changeName' method property -->
+        <div @click="changeSentence('is turning')">Change the sentence by clicking this sentence.</div>
+        <br>
+        <hr>
     </div>
 
     <script src="app.js"></script>
