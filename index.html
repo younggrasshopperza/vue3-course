@@ -6,14 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Vue.js 3 - CDN -->
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <title>Young Grasshopper - Tutorial 1</title>
+    <title>Young Grasshopper - Tutorial 4</title>
 </head>
 <body>
     <h1>Young Grasshopper</h1>
 
     <!-- Mounting the Vue App - The Vue app only works within this div with an id of app -->
     <div id="app">
-        <h2>I am the template now</h2>
+
+        <!-- v-if takes the tag out completely if the value is false -->
+        
+        <!-- static conditional rendering: only displays if the value is true -->
+        <div v-if="true">
+            <!-- displaying the value of the data property: dynamic changable values -->
+            <h3>{{ name }} {{ sentence }} {{ age }}</h3>
+        </div>
+        <!-- static conditional rendering: value will not display if false -->
+        <div v-if="false">
+            <h3>You will not see this sentence if the conditional value is set to false</h3>
+        </div>
+
+        <!-- dynamic conditional rendering: value will not display if false -->
+        <div v-if="showSentence">
+            <!-- displaying the value of the data property: dynamic changable value -->
+            <h3>This sentence is being displayed using the data property that is set to true</h3>
+        </div>
+        
+        <button @click="toggleShowSentence">
+            <!-- show 'Hide Sentence' text if the value is true' -->
+            <span v-if="showSentence">Hide Sentence</span>
+            <!-- show 'Show Sentence' text if the value is false' using v-else, an else condition if the if statement is not true -->
+            <span v-else>Show Sentence</span>
+        </button>
+
+        <!-- v-show hides the tag out completely if the value is false, uses css code, display:none -->
+        <br>
+        <div v-show="showSentence">currently showing the sentence</div>
     </div>
 
     <script src="app.js"></script>
