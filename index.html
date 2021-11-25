@@ -6,26 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Vue.js 3 - CDN -->
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <title>Young Grasshopper - Tutorial 4</title>
+    <style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
+    <title>Young Grasshopper - Tutorial 5</title>
 </head>
 <body>
     <h1>Young Grasshopper</h1>
 
     <!-- Mounting the Vue App - The Vue app only works within this div with an id of app -->
     <div id="app">
-
-        <!-- v-if takes the tag out completely if the value is false -->
-        
-        <!-- static conditional rendering: only displays if the value is true -->
-        <div v-if="true">
-            <!-- displaying the value of the data property: dynamic changable values -->
-            <h3>{{ name }} {{ sentence }} {{ age }}</h3>
-        </div>
-        <!-- static conditional rendering: value will not display if false -->
-        <div v-if="false">
-            <h3>You will not see this sentence if the conditional value is set to false</h3>
-        </div>
-
         <!-- dynamic conditional rendering: value will not display if false -->
         <div v-if="showSentence">
             <!-- displaying the value of the data property: dynamic changable value -->
@@ -39,9 +36,21 @@
             <span v-else>Show Sentence</span>
         </button>
 
-        <!-- v-show hides the tag out completely if the value is false, uses css code, display:none -->
         <br>
-        <div v-show="showSentence">currently showing the sentence</div>
+        <!-- mouse events -->
+
+        <!-- Hover over the first box to see an action happen -->
+        <div class="box" @mouseover="handleEvent">mouseover (enter)</div>
+
+        <!-- if you want to include items in a parameter and view the event object then you must include $event as the first arguement -->
+        <div class="box" @mouseover="handleEvent($event, 5)">mouseover (testing event object with an arguement)</div>
+
+        <!-- Hover over the second box then move the cursor to see an action happen -->
+        <div class="box" @mouseleave="handleEvent">mouseleave</div>
+
+        <!-- Double click the third box to see an action happen -->
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMouseMove">position - {{ x }} - {{ y }}</div>
     </div>
 
     <script src="app.js"></script>
