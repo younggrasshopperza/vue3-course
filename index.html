@@ -6,35 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Vue.js 3 - CDN -->
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <title>Young Grasshopper - Tutorial 7</title>
+    <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p, h3, ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /* fav class - will be attached to the list where the data attribute myFav is true  */
+        li.fav {
+          background: #ff9ed2;
+          color: #fff;  
+        }
+    </style>
+    <title>Young Grasshopper - Tutorial 8</title>
 </head>
 <body>
     <h1>Young Grasshopper</h1>
 
     <!-- Mounting the Vue App - The Vue app only works within this div with an id of app -->
     <div id="app">
-        <!-- attribute binding - "v-bind:" will allow us to use the data properties so the values become dynamic -->
-        <a v-bind:href="url" target="_blank">Young Grasshopper Website</a>
-        <br>
-        <br>
-        <!-- attribute binding - ":" will allow us to use the data properties so the values become dynamic for the href -->
-        <a :href="url" target="_blank">Short hand for data binding - Young Grasshopper Website</a>
-        
         <!-- dynamic conditional rendering: value will not display if false -->
         <div v-if="showDiscography">
             <ul>
-                <!-- loop through all the values in the array and outputs each value -->
-                <li v-for="discography in discographies">
+                <!-- loop through all the values in the array and outputs each value using v-for -->
+                <!-- change css class dynamically by key-value attribute. Attach the fav class to all values where the data attribute myFav is true -->
+                <li v-for="discography in discographies" :class="{ fav: discography.myFav}">
                     <!-- attribute binding - : will allow us to use the data properties so the values become dynamic for the src and alt -->
                     <img :src="discography.img" :alt="discography.album" style="width: 100px; height: 100px;">
-                    <h3><span style="font-weight: bold;">Artist:</span> {{ discography.artist }}</h3>
+                    <h3>Artist: {{ discography.artist }}</h3>
                     <p><span style="font-weight: bold;">Album:</span> {{ discography.album }}</p>
                     <p><span style="font-weight: bold;">Genre:</span> {{ discography.genre }}</p>
                 </li>
             </ul>
         </div>
         
-        <br><br>
         <button @click="toggleShowDiscography">
             <!-- show 'Hide Discography' text if the value is true' -->
             <span v-if="showDiscography">Hide Discography</span>
