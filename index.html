@@ -6,17 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Vue.js 3 - CDN -->
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <style>
-        .box {
-            padding: 100px 0;
-            width: 400px;
-            text-align: center;
-            background: #ddd;
-            margin: 20px;
-            display: inline-block;
-        }
-    </style>
-    <title>Young Grasshopper - Tutorial 5</title>
+    <title>Young Grasshopper - Tutorial 6</title>
 </head>
 <body>
     <h1>Young Grasshopper</h1>
@@ -24,33 +14,24 @@
     <!-- Mounting the Vue App - The Vue app only works within this div with an id of app -->
     <div id="app">
         <!-- dynamic conditional rendering: value will not display if false -->
-        <div v-if="showSentence">
-            <!-- displaying the value of the data property: dynamic changable value -->
-            <h3>This sentence is being displayed using the data property that is set to true</h3>
+        <div v-if="showDiscography">
+            <ul>
+                <li v-for="discography in discographies">
+                    <h3><span style="font-weight: bold;">Artist:</span> {{ discography.artist }}</h3>
+                    <p><span style="font-weight: bold;">Album:</span> {{ discography.album }}</p>
+                    <p><span style="font-weight: bold;">Genre:</span> {{ discography.genre }}</p>
+                </li>
+            </ul>
         </div>
         
-        <button @click="toggleShowSentence">
-            <!-- show 'Hide Sentence' text if the value is true' -->
-            <span v-if="showSentence">Hide Sentence</span>
-            <!-- show 'Show Sentence' text if the value is false' using v-else, an else condition if the if statement is not true -->
-            <span v-else>Show Sentence</span>
+        <button @click="toggleShowDiscography">
+            <!-- show 'Hide Discography' text if the value is true' -->
+            <span v-if="showDiscography">Hide Discography</span>
+            <!-- show 'Show Discography' text if the value is false' using v-else, an else condition if the if statement is not true -->
+            <span v-else>Show Discography</span>
         </button>
 
         <br>
-        <!-- mouse events -->
-
-        <!-- Hover over the first box to see an action happen -->
-        <div class="box" @mouseover="handleEvent">mouseover (enter)</div>
-
-        <!-- if you want to include items in a parameter and view the event object then you must include $event as the first arguement -->
-        <div class="box" @mouseover="handleEvent($event, 5)">mouseover (testing event object with an arguement)</div>
-
-        <!-- Hover over the second box then move the cursor to see an action happen -->
-        <div class="box" @mouseleave="handleEvent">mouseleave</div>
-
-        <!-- Double click the third box to see an action happen -->
-        <div class="box" @dblclick="handleEvent">double click</div>
-        <div class="box" @mousemove="handleMouseMove">position - {{ x }} - {{ y }}</div>
     </div>
 
     <script src="app.js"></script>
