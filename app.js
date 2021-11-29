@@ -1,5 +1,4 @@
 const app = Vue.createApp({
-  // short hand for a function
   data() {
       // We are returning an object inside the function
     return {
@@ -38,3 +37,5 @@ const app = Vue.createApp({
 })
 
 app.mount('#app');
+
+// Challenge - Add to Favs
