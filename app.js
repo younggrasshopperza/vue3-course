@@ -5,7 +5,7 @@ const app = Vue.createApp({
       return {
         name: 'Xolani',
         verb: ' is',
-        sentence: ' living his best lives at',
+        sentence: ' living his best life at',
         age: '25'
       }
     }
