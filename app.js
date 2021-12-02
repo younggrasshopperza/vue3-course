@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // We are returning an object inside the function
     return {
       name: 'Xolani',
-      sentence: ' is living his best lives at',
+      sentence: ' is living his best life at',
       age: 25
     }
   },
