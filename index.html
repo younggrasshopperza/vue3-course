@@ -39,17 +39,16 @@
         <br>
         <!-- mouse events -->
 
-        <!-- Hover over the first box to see an action happen -->
-        <div class="box" @mouseover="handleEvent">mouseover (enter)</div>
-
         <!-- if you want to include items in a parameter and view the event object then you must include $event as the first arguement -->
         <div class="box" @mouseover="handleEvent($event, 5)">mouseover (testing event object with an arguement)</div>
 
-        <!-- Hover over the second box then move the cursor to see an action happen -->
+        <!-- Hover over the second box then move the cursor away from the box to see an action happen -->
         <div class="box" @mouseleave="handleEvent">mouseleave</div>
 
         <!-- Double click the third box to see an action happen -->
         <div class="box" @dblclick="handleEvent">double click</div>
+
+        <!-- Move the mouse over the fourth box then move the cursor around in the box to see an action happen -->
         <div class="box" @mousemove="handleMouseMove">position - {{ x }} - {{ y }}</div>
     </div>
 
