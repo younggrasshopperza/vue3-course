@@ -1,6 +1,6 @@
 const app = Vue.createApp({
   data() {
-      // We are returning an object inside the function
+    // We are returning an object inside the function
     return {
       url: "https://www.younggrasshopper.co.za",
       showDiscography: true,
@@ -35,6 +35,12 @@ const app = Vue.createApp({
     },
     toggleFav(discography) {
       discography.myFav = !discography.myFav;
+    }
+  },
+  computed: {
+    filterDiscographies() {
+      // filter the array to only show myFav values that are true
+      return this.discographies.filter(discography => discography.myFav)
     }
   }
 })
