@@ -20,10 +20,10 @@
             <ul>
                 <!-- loop through all the values in the array and outputs each value using v-for -->
                 <!-- change css class dynamically by key-value attribute. Attach the fav class to all values where the data attribute myFav is true -->
-                <li v-for="discography in discographies" :class="{ fav: discography.myFav}">
+                <li v-for="discography in discographies" :class="{ fav: discography.myFav}" @click="toggleFav(discography)">
                     <!-- attribute binding - : will allow us to use the data properties so the values become dynamic for the src and alt -->
                     <img :src="discography.img" :alt="discography.album" class="img">
-                    <p><span class="bold">Artist:</span> {{ discography.artist }}</p></>
+                    <p><span class="bold">Artist:</span> {{ discography.artist }}</p>
                     <p><span class="bold">Album:</span> {{ discography.album }}</p>
                     <p><span class="bold">Genre:</span> {{ discography.genre }}</p>
                 </li>

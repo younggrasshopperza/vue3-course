@@ -32,10 +32,11 @@ const app = Vue.createApp({
   methods: {
     toggleShowDiscography() {
       this.showDiscography = !this.showDiscography;
+    },
+    toggleFav(discography) {
+      discography.myFav = !discography.myFav;
     }
   }
 })
 
 app.mount('#app');
-
-// Challenge - Add to Favs

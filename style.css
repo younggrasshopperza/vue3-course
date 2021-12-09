@@ -38,6 +38,7 @@ li {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
 }
 /* fav class - will be attached to the list where the data attribute myFav is true  */
 li.fav {
