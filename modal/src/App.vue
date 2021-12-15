@@ -11,7 +11,16 @@
       <p>Come get your 50% discount now whilst stock last!</p>
     </Modal>
   </div>
-  <button @click="toggleModal">Open Modal</button>
+
+  <div v-if="showModalTwo">
+    <Modal @close="toggleModalTwo" >
+      <h1>Register for promotions</h1>
+      <p>Do not miss out of upcoming promo codes!</p>
+    </Modal>
+  </div>
+  <button @click="toggleModal">Info</button>
+  &nbsp;
+  <button @click="toggleModalTwo">Register</button>
 </template>
 
 <script>
@@ -24,14 +33,16 @@ export default {
   data() {
     return {
       title: 'Young Grasshopper',
-      header: 'Sign up to win a prize!',
-      text: 'Come get your 50% discount now whilst stock last!',
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
     }
   }
 }
