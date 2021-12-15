@@ -1,4 +1,4 @@
-# modal
+# reaction-timer-game
 
 ## Project setup
 ```
