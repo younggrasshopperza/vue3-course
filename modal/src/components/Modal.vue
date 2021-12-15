@@ -1,13 +1,18 @@
 <template>
     <div class="backdrop">
-        <div class="modal">
-            <h1>Modal Title</h1>
-            <p>modal content</p>
+        <div class="modal" :class="{promotion: theme === 'promotion'}">
+            <h1>{{ header }}</h1>
+            <p>{{ text }}</p>
         </div>
     </div>
 </template>
+<script>
+export default {
+    props:['header', 'text', 'theme']
+}
+</script>
 
-<style scoped>
+<style>
 .modal {
     width: 400px;
     padding: 20px;
@@ -22,9 +27,17 @@
     width: 100%;
     height: 100%;
 }
-h1 {
+.modal h1 {
     color: #03cfb4;
     border: none;
     padding: 0;
 }
+.modal.promotion {
+    background: crimson;
+    color: white;
+}
+.modal.promotion h1 {
+    color: white;
+}
 </style>
+

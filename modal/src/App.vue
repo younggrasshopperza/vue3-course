@@ -1,6 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal />
+  <Modal :header="header" :text="text" theme="promotion"  />
 </template>
 
 <script>
@@ -12,7 +12,9 @@ export default {
   },
   data() {
     return {
-      title: 'Young Grasshopper'
+      title: 'Young Grasshopper',
+      header: 'Sign up to win a prize!',
+      text: 'Come get your 50% discount now whilst stock last!'
     }
   },
   methods: {
