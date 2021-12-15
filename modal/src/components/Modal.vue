@@ -2,8 +2,10 @@
     <!-- Only when we click on this div will the modal close (self) -->
     <div class="backdrop" @click.self="closeModal">
         <div class="modal" :class="{promotion: theme === 'promotion'}">
-            <h1>{{ header }}</h1>
-            <p>{{ text }}</p>
+            <slot></slot>
+            <div class="actions">
+                <slot name="links"></slot>
+            </div>
         </div>
     </div>
 </template>
@@ -38,11 +40,29 @@ export default {
     border: none;
     padding: 0;
 }
+.modal .actions {
+    text-align: center;
+    margin: 30px 0 10px 0;
+}
+.modal .actions a {
+    color:#333;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 10px;
+}
 .modal.promotion {
     background: crimson;
     color: white;
 }
 .modal.promotion h1 {
+    color: white;
+}
+.modal.promotion .actions {
+    color: white;
+}
+.modal.promotion .actions a {
     color: white;
 }
 </style>
