@@ -37,7 +37,8 @@ export default {
       stopTimer() {
           // Stopping the timer and clearing the timer variable
           clearInterval(this.timer);
-          console.log(this.reactionTime);
+          // We are sending the data up to the parent component (App.vue)
+          this.$emit('done', this.reactionTime);
       }  
     }
 }

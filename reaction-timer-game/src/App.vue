@@ -1,7 +1,8 @@
 <template>
   <h1>Young Grasshopper Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">Play</button>
-  <Block v-if="isPlaying" :delay="delay" />
+  <Block v-if="isPlaying" :delay="delay" @done="endGame" />
+  <p v-if="showResults">Reaction time: {{ score }} is ms</p>
 </template>
 
 <script>
@@ -14,7 +15,9 @@ export default {
   data() {
     return {
       isPlaying: false,
-      delay: null
+      delay: null,
+      score: null,
+      showResults: false
     }
   },
   methods: {
@@ -22,6 +25,12 @@ export default {
       // Random number between 2000 and 7000 milliseconds
       this.delay = 2000 + Math.random() * 5000;
       this.isPlaying = true;
+      this.showResults = false;
+    },
+    endGame(reactionTime) {
+      this.score = reactionTime;
+      this.isPlaying = false;
+      this.showResults = true;
     }
   }
 }
