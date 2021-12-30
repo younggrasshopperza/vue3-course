@@ -1,15 +1,18 @@
 <template>
-  <div class="block" v-if="showBlock">
+  <div class="block" v-if="showBlock" @click="stopTimer">
       Click Me
   </div>
 </template>
 
 <script>
 export default {
+    // Data that comes from App.vue that is passed down from the Block component
     props: ['delay'],
     data() {
       return {
-        showBlock: false
+        showBlock: false,
+        timer: null,
+        reactionTime: 0
       }
     },
     // This will execute as soon as this component is mounted to the dom (on the index.html in the div where the id="app")
@@ -18,17 +21,24 @@ export default {
       setTimeout(() => {
         // The div block is displayed after the delay is complete  
         this.showBlock = true;
+        // We are calling the method here
+        this.startTimer();
+        // We are waiting for the delay time before the actions are performed above
       }, this.delay);  
     },
-    // This will execute as any data is updated inside this component
-    updated() {
-        console.log("component updated");
-    },
-    // This will execute when the component has been unmounted from the dom (when the component is no longer accessible in the App.vue file)
-    unmounted() {
-        console.log("unmounted");
-        // comment the block componenent in the App.vue to after pressing play to view the console log above
-        // This is beneficial for when we start using Vue routing and change from one page to another page
+    methods: {
+      startTimer() {
+        // We are performing an action every 10 milliseconds which is being stored in the timer variable 
+        this.timer = setInterval(() => {
+            // We are increasing the reactionTime by 10 milliseconds every 10 milliseconds 
+            this.reactionTime += 10
+        }, 10);  
+      },
+      stopTimer() {
+          // Stopping the timer and clearing the timer variable
+          clearInterval(this.timer);
+          console.log(this.reactionTime);
+      }  
     }
 }
 </script>
