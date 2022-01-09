@@ -18,7 +18,7 @@
       <!-- Type the skill then hold down alt and press ',' at the same time to add the skill -->
       <input type="text" v-model="tempSkill" @keyup.alt="addSkill">
       <div class="pill" v-for="skill in skills" :key="skill">
-          {{ skill }}
+          <span @click="deleteSkill(skill)">{{ skill }}</span>
       </div>
         
 
@@ -56,6 +56,12 @@ export default {
                 }
               this.tempSkill = "";
             }
+        },
+        deleteSkill(skill) {
+            this.skills = this.skills.filter(item => {
+                // returns values where only values where the skill does not match the skill that was selected
+                return skill !== item
+            });
         }
     }
 }
