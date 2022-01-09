@@ -14,22 +14,17 @@
           <option value="Project Manager">Project Manager</option>
       </select>
 
+      <label>Skills:</label>
+      <!-- Type the skill then hold down alt and press ',' at the same time to add the skill -->
+      <input type="text" v-model="tempSkill" @keyup.alt="addSkill">
+      <div class="pill" v-for="skill in skills" :key="skill">
+          {{ skill }}
+      </div>
+        
+
       <div class="terms">
           <input type="checkbox" v-model="terms" required>
           <label>Accept Terms and Conditions</label>
-      </div>
-
-      <div>
-          <input type="checkbox" value="Xolani" v-model="names">
-          <label>Xolani</label>
-      </div>
-      <div>
-          <input type="checkbox" value="Palesa" v-model="names">
-          <label>Palesa</label>
-      </div>
-      <div>
-          <input type="checkbox" value="Brandon" v-model="names">
-          <label>Brandon</label>
       </div>
   </form>
 
@@ -37,7 +32,6 @@
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
   <p>Terms and Conditions: {{ terms }}</p>
-  <p>Names: {{ names }}</p>
 </template>
 
 <script>
@@ -48,7 +42,20 @@ export default {
             password: "",
             role: "",
             terms: false,
-            names: []
+            tempSkill: '',
+            skills: []
+        }
+    },
+    methods: {
+        // e represents the event object, when an event happens. When a user types
+        addSkill(e) {
+            if(e.key === "," && this.tempSkill) {
+                // Check if the skill already exists
+                if(!this.skills.includes(this.tempSkill)) {
+                    this.skills.push(this.tempSkill);  
+                }
+              this.tempSkill = "";
+            }
         }
     }
 }
