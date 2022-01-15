@@ -1,9 +1,13 @@
 <template>
-  <h1>{{ job.title }}</h1>
-  <p>The job id is {{ id }}</p>
-  <h1>{{ job.details }}</h1>
+  <div v-if="job">
+    <h1>{{ job.title }}</h1>
+    <p>The job id is {{ id }}</p>
+    <h1>{{ job.details }}</h1>
+  </div>
+  <div v-else>
+    <p>Loading job data...</p>
+  </div>
 </template>
-
 <script>
 export default {
     props: ['id'],
@@ -20,7 +24,6 @@ export default {
     }
 }
 </script>
-
 <style>
 
 </style>
